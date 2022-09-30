@@ -14,6 +14,13 @@
 #define SO_LONG_H
 
 // Macros
+#define WINDOW_HEIGHT 360
+#define WINDOW_WIDTH 640
+#define EMPTY_SPACE '0'
+#define WALL '1'
+#define COLLECTIBLE 'C'
+#define EXIT 'E'
+#define PLAYER_POSITION 'P'
 
 // Structs
 
