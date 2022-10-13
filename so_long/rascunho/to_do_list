@@ -1,0 +1,16 @@
+Add novas validações no read_map
+
+verificar se está dando relink > acho que sim
+
+usar a gnl para ler o arquivo .ber (ler cada letra e usar a imagem correspondente para montar a imagem completa)
+
+Steps:
+validate map (wall, path...) > if no, return error
+
+convert xpm to img
+start print image in right place
+make overwrite func for game works
+
+start make machanic game
+system movement
+check valid movement
