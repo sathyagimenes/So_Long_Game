@@ -6,19 +6,19 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 23:20:58 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/16 22:12:57 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:42:01 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	set_map_length(char *argv_1, t_program *program);
-int	valid_read(char *argv_1);
-int	save_map(char *argv_1, t_program *program);
-int	verify_walls(t_program *program);
-int	verify_entities(t_program *program);
+static int set_map_length(char *argv_1, t_program *program);
+int valid_read(char *argv_1);
+int save_map(char *argv_1, t_program *program);
+int verify_walls(t_program *program);
+int verify_entities(t_program *program);
 
-int	read_map(char *argv_1, t_program *program)
+int read_map(char *argv_1, t_program *program)
 {
 	// int		fd;
 	// char	*line;
@@ -51,13 +51,13 @@ int	read_map(char *argv_1, t_program *program)
 	return (SUCCESS);
 }
 
-static int	set_map_length(char *argv_1, t_program *program)
+static int set_map_length(char *argv_1, t_program *program)
 {
-	int		fd;
-	int		gnl;
-	int		nrows;
-	int		ncolumns;
-	char	*line;
+	int fd;
+	int gnl;
+	int nrows;
+	int ncolumns;
+	char *line;
 
 	gnl = 1;
 	nrows = 0;
@@ -69,7 +69,7 @@ static int	set_map_length(char *argv_1, t_program *program)
 		nrows++;
 		if (nrows == 1)
 			ncolumns = ft_strlen(line);
-		if(ft_strlen(line) == 0)
+		if (ft_strlen(line) == 0)
 			nrows--;
 		if (gnl >= 0)
 			free(line);
@@ -82,13 +82,13 @@ static int	set_map_length(char *argv_1, t_program *program)
 	return (SUCCESS);
 }
 
-int	save_map(char *argv_1, t_program *program)
+int save_map(char *argv_1, t_program *program)
 {
-	int		fd;
-	int		i;
-	int		gnl;
-	int		nrows;
-	size_t	row_len;
+	int fd;
+	int i;
+	int gnl;
+	int nrows;
+	size_t row_len;
 
 	i = 0;
 	gnl = 1;
@@ -109,11 +109,11 @@ int	save_map(char *argv_1, t_program *program)
 	return (SUCCESS);
 }
 
-int	valid_read(char *argv_1)
+int valid_read(char *argv_1)
 {
-	int		fd;
-	char	*line;
-	int		gnl;
+	int fd;
+	char *line;
+	int gnl;
 
 	fd = open(argv_1, O_RDONLY);
 	gnl = 1;
@@ -129,14 +129,14 @@ int	valid_read(char *argv_1)
 	return (SUCCESS);
 }
 
-int	verify_walls(t_program *program)
+int verify_walls(t_program *program)
 {
-	int		x;
-	int		y;
-	char	**grid;
-	int		ncolumn;
-	int		nrow;
-	
+	int x;
+	int y;
+	char **grid;
+	int ncolumn;
+	int nrow;
+
 	ncolumn = program->column_qnty;
 	nrow = program->row_qnty;
 	grid = program->map_grid;
@@ -146,10 +146,9 @@ int	verify_walls(t_program *program)
 		y = 0;
 		while (y < ncolumn)
 		{
-			if (x == 0 || y == 0
-				|| x == nrow - 1 || y == ncolumn - 1)
-				if (grid[x][y] == WALL)
-			 		return (FAIL);
+			if (x == 0 || y == 0 || x == nrow - 1 || y == ncolumn - 1)
+				if (grid[x][y] != WALL)
+					return (FAIL);
 			y++;
 		}
 		x++;
@@ -157,34 +156,34 @@ int	verify_walls(t_program *program)
 	return (SUCCESS);
 }
 
-int	verify_entities(t_program *program)
-{
-	int		x;
-	int		y;
-	char	**grid;
-	int		ncolumn;
-	int		nrow;
-	
-	ncolumn = program->column_qnty;
-	nrow = program->row_qnty;
-	grid = program->map_grid;
-	x = 0;
-	while (x < nrow)
-	{
-		y = 0;
-		while (y < ncolumn)
-		{
-			if (x == 0 || y == 0
-				|| x == nrow - 1 || y == ncolumn - 1)
-				if (grid[x][y] == PLAYER_POSITION)
-				{
-			 		program->player.x = x;
-					program->player.y = y;
-				}
-			y++;
-		}
-		x++;
-	}
-	printf("x:%d e y:%d", program->player.x, program->player.y);
-	return (SUCCESS);
-}
+// int	verify_entities(t_program *program)
+// {
+// 	int		x;
+// 	int		y;
+// 	char	**grid;
+// 	int		ncolumn;
+// 	int		nrow;
+
+// 	ncolumn = program->column_qnty;
+// 	nrow = program->row_qnty;
+// 	grid = program->map_grid;
+// 	x = 0;
+// 	while (x < nrow)
+// 	{
+// 		y = 0;
+// 		while (y < ncolumn)
+// 		{
+// 			if (x == 0 || y == 0
+// 				|| x == nrow - 1 || y == ncolumn - 1)
+// 				if (grid[x][y] == PLAYER_POSITION)
+// 				{
+// 			 		program->player.x = x;
+// 					program->player.y = y;
+// 				}
+// 			y++;
+// 		}
+// 		x++;
+// 	}
+// 	printf("x:%d e y:%d", program->player.x, program->player.y);
+// 	return (SUCCESS);
+// }
