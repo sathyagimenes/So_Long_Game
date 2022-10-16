@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 01:50:52 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/04/07 03:02:37 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/16 03:17:21 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	count;
+	size_t	i;
 
-	count = 0;
-	while (*s)
-	{
-		count++;
-		s++;
-	}
-	return (count);
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
 }

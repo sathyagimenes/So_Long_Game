@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/13 21:56:02 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/16 22:09:15 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ typedef enum s_error {
 	INVALID_ARGUMENT,
 	INVALID_TYPE_BER,
 	INVALID_SIZE,
-	INVALID_MAP
+	INVALID_MAP,
+	INVALID_SAVE,
+	INVALID_ENTITIES,
+	INVALID_WALL
 }	t_error;
 
 // Structs
@@ -59,6 +62,9 @@ typedef struct s_program {
 	int		row_qnty;
 	int		column_qnty;
 	char	**map_grid;
+	t_player	player;
+	t_enemy		enemy;
+	t_objects	obj;
 }	t_program;
 
 typedef struct s_img {
@@ -68,6 +74,23 @@ typedef struct s_img {
 	int		line_length;
 	int		endian;
 }	t_img;
+
+typedef struct s_point {
+	int		x;
+	int		y;
+}	t_point;
+
+typedef struct s_player {
+	t_point	point;
+}	t_player;
+
+typedef struct s_objects {
+	t_point	point;
+}	t_objects;
+
+typedef struct s_enemy {
+	t_point	point;
+}	t_enemy;
 
 // Functions declarations
 void	load_data(t_program *program);
