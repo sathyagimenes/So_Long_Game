@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/16 21:05:35 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/17 10:46:57 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,13 @@ typedef enum s_error
 	INVALID_MAP,
 	INVALID_SAVE,
 	INVALID_ENTITIES,
-	INVALID_WALL
+	INVALID_WALL,
+	INVALID_PLAYER,
+	INVALID_COLLECTIBLE,
+	INVALID_EXIT
 } t_error;
 
 // Structs
-typedef struct s_program
-{
-	void *mlx;
-	void *mlx_win;
-	int row_qnty;
-	int column_qnty;
-	char **map_grid;
-	// t_player player;
-	// t_enemy enemy;
-	// t_objects obj;
-} t_program;
 
 typedef struct s_img
 {
@@ -78,26 +70,46 @@ typedef struct s_img
 	int endian;
 } t_img;
 
-// typedef struct s_point
-// {
-// 	int x;
-// 	int y;
-// } t_point;
+typedef struct s_sprite
+{
+	int qty;
+} t_sprite;
 
-// typedef struct s_player
-// {
-// 	t_point point;
-// } t_player;
+typedef struct s_point
+{
+	int x;
+	int y;
+} t_point;
 
-// typedef struct s_objects
-// {
-// 	t_point point;
-// } t_objects;
+typedef struct s_player
+{
+	t_point point;
+	int qty;
+} t_player;
 
-// typedef struct s_enemy
-// {
-// 	t_point point;
-// } t_enemy;
+typedef struct s_objects
+{
+	t_sprite collectible;
+	t_sprite exit;
+
+} t_objects;
+
+typedef struct s_enemy // Refletir se vai ficar separado mesmo ou se coloca no objects
+{
+	t_point point;
+} t_enemy;
+
+typedef struct s_program
+{
+	void *mlx;
+	void *mlx_win;
+	int row_qnty;
+	int column_qnty;
+	char **map_grid;
+	t_player player;
+	t_enemy enemy;
+	t_objects obj;
+} t_program;
 
 // Functions declarations
 void load_data(t_program *program);
@@ -107,8 +119,10 @@ int keypress_hook(int keycode, t_program *program);
 int end_game(t_program *program);
 int print_error_message(t_error error_type);
 int print_map_error(t_error error_type);
+int print_entity_error(t_error error_type);
 int read_map(char *argv_1, t_program *program);
 int get_next_line(int fd, char **line);
 void free_grid(t_program *program);
+int entity_validation(t_program *program);
 
 #endif
