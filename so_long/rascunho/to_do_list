@@ -1,6 +1,6 @@
-Add novas validações no read_map
+load posições das entities
 
-verificar se está dando relink > acho que sim
+verificar se está dando relink
 
 usar a gnl para ler o arquivo .ber (ler cada letra e usar a imagem correspondente para montar a imagem completa)
 
