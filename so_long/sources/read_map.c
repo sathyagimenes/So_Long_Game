@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 23:20:58 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/16 15:42:01 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:12:47 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ int verify_entities(t_program *program);
 
 int read_map(char *argv_1, t_program *program)
 {
-	// int		fd;
-	// char	*line;
-	// char	*map_single_line;
-
 	if (!valid_read(argv_1))
 		return (print_map_error(INVALID_MAP));
 	if (!set_map_length(argv_1, program))
@@ -38,11 +34,11 @@ int read_map(char *argv_1, t_program *program)
 		free_grid(program);
 		return (print_map_error(INVALID_WALL));
 	}
-	// if (!verify_entities(program))
-	// {
-	// 	free_grid(program);
-	// 	return (print_map_error(INVALID_ENTITIES));
-	// }
+	if (!verify_entities(program))
+	{
+		free_grid(program);
+		return (print_map_error(INVALID_ENTITIES));
+	}
 	// if (!verify_path(program))
 	// {
 	// 	free_grid(program);
@@ -156,34 +152,31 @@ int verify_walls(t_program *program)
 	return (SUCCESS);
 }
 
-// int	verify_entities(t_program *program)
-// {
-// 	int		x;
-// 	int		y;
-// 	char	**grid;
-// 	int		ncolumn;
-// 	int		nrow;
+int verify_entities(t_program *program)
+{
+	int x;
+	int y;
+	char **grid;
+	int ncolumn;
+	int nrow;
 
-// 	ncolumn = program->column_qnty;
-// 	nrow = program->row_qnty;
-// 	grid = program->map_grid;
-// 	x = 0;
-// 	while (x < nrow)
-// 	{
-// 		y = 0;
-// 		while (y < ncolumn)
-// 		{
-// 			if (x == 0 || y == 0
-// 				|| x == nrow - 1 || y == ncolumn - 1)
-// 				if (grid[x][y] == PLAYER_POSITION)
-// 				{
-// 			 		program->player.x = x;
-// 					program->player.y = y;
-// 				}
-// 			y++;
-// 		}
-// 		x++;
-// 	}
-// 	printf("x:%d e y:%d", program->player.x, program->player.y);
-// 	return (SUCCESS);
-// }
+	ncolumn = program->column_qnty;
+	nrow = program->row_qnty;
+	grid = program->map_grid;
+	x = 1;
+	while (x < nrow - 1)
+	{
+		y = 1;
+		while (y < ncolumn - 1)
+		{
+			if (grid[x][y] != PLAYER_POSITION && grid[x][y] != EXIT && grid[x][y] != COLLECTIBLE && grid[x][y] != EMPTY_SPACE && grid[x][y] != WALL)
+			{
+				free_grid(program);
+				return (print_error_message(INVALID_ENTITIES));
+			}
+			y++;
+		}
+		x++;
+	}
+	return (SUCCESS);
+}
