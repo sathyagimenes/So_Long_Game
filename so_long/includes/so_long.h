@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/17 10:46:57 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/18 09:07:42 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_program
 } t_program;
 
 // Functions declarations
-void load_data(t_program *program);
+int load_data(t_program *program);
 int initialize_game(t_program *program);
 int validate_argument(int argc, char *argv);
 int keypress_hook(int keycode, t_program *program);
@@ -123,6 +123,6 @@ int print_entity_error(t_error error_type);
 int read_map(char *argv_1, t_program *program);
 int get_next_line(int fd, char **line);
 void free_grid(t_program *program);
-int entity_validation(t_program *program);
+int map_validation(t_program *program);
 
 #endif

@@ -6,17 +6,15 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 23:20:58 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/16 21:12:47 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/18 09:05:04 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static int set_map_length(char *argv_1, t_program *program);
-int valid_read(char *argv_1);
-int save_map(char *argv_1, t_program *program);
-int verify_walls(t_program *program);
-int verify_entities(t_program *program);
+static int valid_read(char *argv_1);
+static int save_map(char *argv_1, t_program *program);
 
 int read_map(char *argv_1, t_program *program)
 {
@@ -29,21 +27,26 @@ int read_map(char *argv_1, t_program *program)
 		free_grid(program);
 		return (print_map_error(INVALID_SAVE));
 	}
-	if (!verify_walls(program))
+	return (SUCCESS);
+}
+
+static int valid_read(char *argv_1)
+{
+	int fd;
+	char *line;
+	int gnl;
+
+	fd = open(argv_1, O_RDONLY);
+	gnl = 1;
+	while (gnl)
 	{
-		free_grid(program);
-		return (print_map_error(INVALID_WALL));
+		gnl = get_next_line(fd, &line);
+		if (gnl < 0)
+			return (FAIL);
+		if (gnl >= 0)
+			free(line);
 	}
-	if (!verify_entities(program))
-	{
-		free_grid(program);
-		return (print_map_error(INVALID_ENTITIES));
-	}
-	// if (!verify_path(program))
-	// {
-	// 	free_grid(program);
-	// 	return (print_map_error(ERR_INVALID_ENTITIES));
-	// }
+	close(fd);
 	return (SUCCESS);
 }
 
@@ -78,7 +81,7 @@ static int set_map_length(char *argv_1, t_program *program)
 	return (SUCCESS);
 }
 
-int save_map(char *argv_1, t_program *program)
+static int save_map(char *argv_1, t_program *program)
 {
 	int fd;
 	int i;
@@ -102,81 +105,5 @@ int save_map(char *argv_1, t_program *program)
 		i++;
 	}
 	close(fd);
-	return (SUCCESS);
-}
-
-int valid_read(char *argv_1)
-{
-	int fd;
-	char *line;
-	int gnl;
-
-	fd = open(argv_1, O_RDONLY);
-	gnl = 1;
-	while (gnl)
-	{
-		gnl = get_next_line(fd, &line);
-		if (gnl < 0)
-			return (FAIL);
-		if (gnl >= 0)
-			free(line);
-	}
-	close(fd);
-	return (SUCCESS);
-}
-
-int verify_walls(t_program *program)
-{
-	int x;
-	int y;
-	char **grid;
-	int ncolumn;
-	int nrow;
-
-	ncolumn = program->column_qnty;
-	nrow = program->row_qnty;
-	grid = program->map_grid;
-	x = 0;
-	while (x < nrow)
-	{
-		y = 0;
-		while (y < ncolumn)
-		{
-			if (x == 0 || y == 0 || x == nrow - 1 || y == ncolumn - 1)
-				if (grid[x][y] != WALL)
-					return (FAIL);
-			y++;
-		}
-		x++;
-	}
-	return (SUCCESS);
-}
-
-int verify_entities(t_program *program)
-{
-	int x;
-	int y;
-	char **grid;
-	int ncolumn;
-	int nrow;
-
-	ncolumn = program->column_qnty;
-	nrow = program->row_qnty;
-	grid = program->map_grid;
-	x = 1;
-	while (x < nrow - 1)
-	{
-		y = 1;
-		while (y < ncolumn - 1)
-		{
-			if (grid[x][y] != PLAYER_POSITION && grid[x][y] != EXIT && grid[x][y] != COLLECTIBLE && grid[x][y] != EMPTY_SPACE && grid[x][y] != WALL)
-			{
-				free_grid(program);
-				return (print_error_message(INVALID_ENTITIES));
-			}
-			y++;
-		}
-		x++;
-	}
 	return (SUCCESS);
 }
