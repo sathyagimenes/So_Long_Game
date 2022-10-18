@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 09:07:42 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/18 12:37:32 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 #define COLLECTIBLE 'C'
 #define EXIT 'E'
 #define PLAYER_POSITION 'P'
+#define ENEMY 'M'
 #define IMG_SIZE 32
 
 #define RED "\x1b[38;5;1m"
@@ -58,6 +59,14 @@ typedef enum s_error
 	INVALID_COLLECTIBLE,
 	INVALID_EXIT
 } t_error;
+
+typedef enum e_face
+{
+	P_UP,
+	P_DOWN,
+	P_LEFT,
+	P_RIGHT,
+} t_face;
 
 // Structs
 
@@ -85,19 +94,17 @@ typedef struct s_player
 {
 	t_point point;
 	int qty;
+	int steps;
+	t_face face;
 } t_player;
 
 typedef struct s_objects
 {
 	t_sprite collectible;
 	t_sprite exit;
+	t_sprite enemy;
 
 } t_objects;
-
-typedef struct s_enemy // Refletir se vai ficar separado mesmo ou se coloca no objects
-{
-	t_point point;
-} t_enemy;
 
 typedef struct s_program
 {
@@ -107,12 +114,11 @@ typedef struct s_program
 	int column_qnty;
 	char **map_grid;
 	t_player player;
-	t_enemy enemy;
 	t_objects obj;
 } t_program;
 
 // Functions declarations
-int load_data(t_program *program);
+void load_data(t_program *program);
 int initialize_game(t_program *program);
 int validate_argument(int argc, char *argv);
 int keypress_hook(int keycode, t_program *program);
@@ -124,5 +130,6 @@ int read_map(char *argv_1, t_program *program);
 int get_next_line(int fd, char **line);
 void free_grid(t_program *program);
 int map_validation(t_program *program);
+void draw_map(t_program *program);
 
 #endif

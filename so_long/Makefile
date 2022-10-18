@@ -17,7 +17,8 @@ SRCS	= ./sources/main.c				\
 			./sources/error_messages.c	\
 			./sources/read_map.c		\
 			./sources/get_next_line.c	\
-			./sources/entity_validation.c
+			./sources/entity_validation.c	\
+			./sources/draw_map.c		\
 
 OBJS	= $(SRCS:%.c=%.o)
 

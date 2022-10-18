@@ -6,25 +6,23 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:30:38 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 08:46:55 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/18 10:32:43 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int find_player(t_program *program);
+static void save_player_position(t_program *program);
+static void initial_configuration(t_program *program);
 
-int load_data(t_program *program)
+void load_data(t_program *program)
 {
-	if (!find_player(program))
-		return print_entity_error(INVALID_PLAYER);
-	return (SUCCESS);
+	save_player_position(program);
+	initial_configuration(program);
 }
 
-static int find_player(t_program *program)
+static void save_player_position(t_program *program)
 {
-	// coloca a posição do player
-	// coloca configs do player
 	int row;
 	int column;
 
@@ -38,11 +36,15 @@ static int find_player(t_program *program)
 			{
 				program->player.point.x = row;
 				program->player.point.y = column;
-				return (SUCCESS);
 			}
 			column++;
 		}
 		row++;
 	}
-	return (FAIL);
+}
+
+static void initial_configuration(t_program *program)
+{
+	program->player.face = P_DOWN;
+	program->player.steps = 0;
 }

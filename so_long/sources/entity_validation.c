@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 09:48:59 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 09:06:12 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/18 12:23:03 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void count_entities(t_program *program);
 
 int map_validation(t_program *program)
 {
-    if (!verify_walls(program))
+	if (!verify_walls(program))
 	{
 		free_grid(program);
 		return (FAIL);
@@ -29,17 +29,17 @@ int map_validation(t_program *program)
 		free_grid(program);
 		return (FAIL);
 	}
-    if (!quantity_validation(program))
-    {
-        free_grid(program);
-        return (FAIL);
-    }
-    // if (!verify_path(program)) //PRECISO SEPARAR ALGUMAS FUNÇÕES DAQUI. +5
+	if (!quantity_validation(program))
+	{
+		free_grid(program);
+		return (FAIL);
+	}
+	// if (!verify_path(program))
 	// {
 	// 	free_grid(program);
 	// 	return (print_map_error(INVALID_PATH));
 	// }
-    return (SUCCESS);
+	return (SUCCESS);
 }
 
 static int verify_walls(t_program *program)
@@ -86,7 +86,7 @@ static int verify_entities(t_program *program)
 		y = 1;
 		while (y < ncolumn - 1)
 		{
-			if (grid[x][y] != PLAYER_POSITION && grid[x][y] != EXIT && grid[x][y] != COLLECTIBLE && grid[x][y] != EMPTY_SPACE && grid[x][y] != WALL)
+			if (grid[x][y] != PLAYER_POSITION && grid[x][y] != EXIT && grid[x][y] != COLLECTIBLE && grid[x][y] != EMPTY_SPACE && grid[x][y] != WALL && grid[x][y] != ENEMY)
 				return (print_map_error(INVALID_ENTITIES));
 			y++;
 		}
@@ -97,38 +97,41 @@ static int verify_entities(t_program *program)
 
 static int quantity_validation(t_program *program)
 {
-    count_entities(program);
-    if (program->player.qty != 1)
-        return (print_entity_error(INVALID_PLAYER));
-    if (program->obj.collectible.qty < 1)
-        return (print_entity_error(INVALID_COLLECTIBLE));
-    if (program->obj.exit.qty != 1)
-        return (print_entity_error(INVALID_EXIT));
-    return (SUCCESS);
+	count_entities(program);
+	if (program->player.qty != 1)
+		return (print_entity_error(INVALID_PLAYER));
+	if (program->obj.collectible.qty < 1)
+		return (print_entity_error(INVALID_COLLECTIBLE));
+	if (program->obj.exit.qty != 1)
+		return (print_entity_error(INVALID_EXIT));
+	return (SUCCESS);
 }
 
 static void count_entities(t_program *program)
 {
-    int x;
-    int y;
+	int x;
+	int y;
 
-    program->player.qty = 0;
-    program->obj.collectible.qty = 0;
-    program->obj.exit.qty = 0;
-    x = 1;
-    while (x < program->row_qnty - 1)
-    {
-        y = 1;
-        while (y < program->column_qnty - 1)
-        {
-            if (program->map_grid[x][y] == PLAYER_POSITION)
-                program->player.qty += 1;
-            if (program->map_grid[x][y] == EXIT)
-                program->obj.exit.qty += 1;
-            if (program->map_grid[x][y] == COLLECTIBLE)
-                program->obj.collectible.qty += 1;
-            y++;
-        }
-        x++;
-    }
+	program->player.qty = 0;
+	program->obj.collectible.qty = 0;
+	program->obj.exit.qty = 0;
+	program->obj.enemy.qty = 0;
+	x = 1;
+	while (x < program->row_qnty - 1)
+	{
+		y = 1;
+		while (y < program->column_qnty - 1)
+		{
+			if (program->map_grid[x][y] == PLAYER_POSITION)
+				program->player.qty += 1;
+			if (program->map_grid[x][y] == EXIT)
+				program->obj.exit.qty += 1;
+			if (program->map_grid[x][y] == COLLECTIBLE)
+				program->obj.collectible.qty += 1;
+			if (program->map_grid[x][y] == ENEMY)
+				program->obj.enemy.qty += 1;
+			y++;
+		}
+		x++;
+	}
 }

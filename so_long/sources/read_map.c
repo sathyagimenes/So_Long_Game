@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 23:20:58 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 09:05:04 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/18 10:34:50 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int set_map_length(char *argv_1, t_program *program)
 			free(line);
 	}
 	close(fd);
-	if (nrows < 4 || ncolumns < 4)
+	if (nrows < 3 || ncolumns < 3)
 		return (FAIL);
 	program->row_qnty = nrows;
 	program->column_qnty = ncolumns;

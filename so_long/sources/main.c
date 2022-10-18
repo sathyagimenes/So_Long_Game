@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:29:41 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 09:07:34 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/18 10:32:18 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	main(int argc, char **argv)
 		return (FAIL);
 	if (!map_validation(&program))
 		return (FAIL);
-	// if (!load_data(&program))
-	// 	return (FAIL);
+	load_data(&program);
 	if (!initialize_game(&program))
 		return (FAIL);
 	return (SUCCESS);

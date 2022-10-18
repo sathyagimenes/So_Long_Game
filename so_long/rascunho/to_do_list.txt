@@ -1,5 +1,7 @@
 load posição do player e demais infos
 
+adicionar validação para mapa retangular
+
 verificar se está dando relink
 
 usar a gnl para ler o arquivo .ber (ler cada letra e usar a imagem correspondente para montar a imagem completa)
@@ -14,3 +16,14 @@ make overwrite func for game works
 start make machanic game
 system movement
 check valid movement
+
+Para imprimir o contador na tela:
+Os parametros da seguinte funcao mlx_string_put possuem os mesmos signifi-
+cados. No entanto, em vez de um pixel simples, providenciamos uma string que
+sera exibida em (x, y):
+int mlx_string_put(void *mlx_ptr,
+void *win_ptr,
+int x, int y,
+int color,
+char *string
+);
