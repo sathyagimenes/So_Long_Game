@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 12:37:32 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/19 11:29:22 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 #define EXIT 'E'
 #define PLAYER_POSITION 'P'
 #define ENEMY 'M'
-#define IMG_SIZE 32
+#define IMG_SIZE 64
 
 #define RED "\x1b[38;5;1m"
 #define RESET "\x1b[0m"
