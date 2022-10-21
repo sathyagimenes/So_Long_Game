@@ -1,6 +1,6 @@
 load posição do player e demais infos
 
-adicionar validação para mapa retangular
+adicionar validação para mapa retangular <<<<
 
 verificar se está dando relink
 

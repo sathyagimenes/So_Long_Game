@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:41:28 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/12 17:08:31 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:17:16 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	initialize_game(t_program *program)
 			program->row_qnty * IMG_SIZE,
 			"so_long");
 	mlx_key_hook(program->mlx_win, keypress_hook, program);
+	//mlx_expose_hook(program->mlx, &draw_map, program);
 	mlx_loop(program->mlx);
 	return (SUCCESS);
 }

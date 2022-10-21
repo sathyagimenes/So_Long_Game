@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/19 11:29:22 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:38:24 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ typedef struct s_img
 typedef struct s_sprite
 {
 	int qty;
+	int width;
+	int height;
+	void *image;
+	char *path;
 } t_sprite;
 
 typedef struct s_point
@@ -93,9 +97,13 @@ typedef struct s_point
 typedef struct s_player
 {
 	t_point point;
+	void *image;
 	int qty;
 	int steps;
+	int width;
+	int height;
 	t_face face;
+	t_sprite sprite[4];
 } t_player;
 
 typedef struct s_objects
@@ -103,7 +111,8 @@ typedef struct s_objects
 	t_sprite collectible;
 	t_sprite exit;
 	t_sprite enemy;
-
+	t_sprite floor;
+	t_sprite wall;
 } t_objects;
 
 typedef struct s_program
@@ -115,6 +124,7 @@ typedef struct s_program
 	char **map_grid;
 	t_player player;
 	t_objects obj;
+	t_point pos;
 } t_program;
 
 // Functions declarations
@@ -130,6 +140,8 @@ int read_map(char *argv_1, t_program *program);
 int get_next_line(int fd, char **line);
 void free_grid(t_program *program);
 int map_validation(t_program *program);
-void draw_map(t_program *program);
+// int draw_map(t_program *program);
+void render(t_program *program);
+int load_sprites(t_program *program);
 
 #endif
