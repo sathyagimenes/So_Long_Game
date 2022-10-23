@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:46:53 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 16:42:48 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:01:16 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	end_game(t_program *program, t_end end_type)
 		ft_printf("You lose! The orcs found Frodo!\n");
 	if (end_type == FOUND_EXIT)
 		ft_printf("You win! Frodo destroyed the ring in Mount Doom!\n");
+	if (end_type == ESCAPE_KEY)
+		ft_printf("You gave up!\n");
 	exit(SUCCESS);
 	return (SUCCESS);
 }

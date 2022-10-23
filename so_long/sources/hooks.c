@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:29:03 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 15:32:54 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:55:31 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	keypress_hook(int keycode, t_program *program)
 {
 	if (keycode == XK_Escape)
 	{
-		end_game(program);
+		end_game(program, ESCAPE_KEY);
 	}
 	if (keycode == XK_Up)
 	{

@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 16:40:34 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:55:48 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef enum e_face
 
 typedef enum e_end
 {
+	ESCAPE_KEY,
 	FOUND_EXIT,
 	ENEMY_KILL,
 } t_end;
@@ -138,7 +139,7 @@ void load_data(t_program *program);
 int initialize_game(t_program *program);
 int validate_argument(int argc, char *argv);
 int keypress_hook(int keycode, t_program *program);
-int	end_game(t_program *program, t_end end_type);
+int end_game(t_program *program, t_end end_type);
 int print_error_message(t_error error_type);
 int print_map_error(t_error error_type);
 int print_entity_error(t_error error_type);
@@ -152,6 +153,5 @@ void move_player_up(t_program *program);
 void move_player_down(t_program *program);
 void move_player_right(t_program *program);
 void move_player_left(t_program *program);
-
 
 #endif

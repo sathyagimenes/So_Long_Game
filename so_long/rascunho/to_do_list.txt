@@ -1,6 +1,8 @@
 Verificação de path
 verificar valgrind - pedir ajuda do gabriel
 Rever logica dos ponteiros. qual ponteiro estou usando para o player
+Reler o pdf. Ver se está cumprindo todos os requisitos
+mudar o frodo e o orc?
 
 verificar se está dando relink
 
@@ -16,14 +18,3 @@ make overwrite func for game works
 start make machanic game
 system movement
 check valid movement
-
-Para imprimir o contador na tela:
-Os parametros da seguinte funcao mlx_string_put possuem os mesmos signifi-
-cados. No entanto, em vez de um pixel simples, providenciamos uma string que
-sera exibida em (x, y):
-int mlx_string_put(void *mlx_ptr,
-void *win_ptr,
-int x, int y,
-int color,
-char *string
-);
