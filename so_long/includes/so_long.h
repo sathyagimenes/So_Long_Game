@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/21 10:38:24 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:40:34 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@
 #define SUCCESS 1
 
 // Enums
-typedef enum s_error
+typedef enum e_error
 {
 	INVALID_ARGUMENT,
 	INVALID_TYPE_BER,
-	INVALID_SIZE,
+	INVALID_SHAPE,
 	INVALID_MAP,
 	INVALID_SAVE,
 	INVALID_ENTITIES,
@@ -65,8 +65,14 @@ typedef enum e_face
 	P_UP,
 	P_DOWN,
 	P_LEFT,
-	P_RIGHT,
+	P_RIGHT
 } t_face;
+
+typedef enum e_end
+{
+	FOUND_EXIT,
+	ENEMY_KILL,
+} t_end;
 
 // Structs
 
@@ -132,7 +138,7 @@ void load_data(t_program *program);
 int initialize_game(t_program *program);
 int validate_argument(int argc, char *argv);
 int keypress_hook(int keycode, t_program *program);
-int end_game(t_program *program);
+int	end_game(t_program *program, t_end end_type);
 int print_error_message(t_error error_type);
 int print_map_error(t_error error_type);
 int print_entity_error(t_error error_type);
@@ -140,8 +146,12 @@ int read_map(char *argv_1, t_program *program);
 int get_next_line(int fd, char **line);
 void free_grid(t_program *program);
 int map_validation(t_program *program);
-// int draw_map(t_program *program);
 void render(t_program *program);
 int load_sprites(t_program *program);
+void move_player_up(t_program *program);
+void move_player_down(t_program *program);
+void move_player_right(t_program *program);
+void move_player_left(t_program *program);
+
 
 #endif

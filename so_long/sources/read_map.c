@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 23:20:58 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 10:34:50 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:51:17 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int read_map(char *argv_1, t_program *program)
 	if (!valid_read(argv_1))
 		return (print_map_error(INVALID_MAP));
 	if (!set_map_length(argv_1, program))
-		return (print_map_error(INVALID_SIZE));
+		return (print_map_error(INVALID_SHAPE));
 	if (!save_map(argv_1, program))
 	{
 		free_grid(program);
@@ -74,7 +74,7 @@ static int set_map_length(char *argv_1, t_program *program)
 			free(line);
 	}
 	close(fd);
-	if (nrows < 3 || ncolumns < 3)
+	if (nrows == ncolumns)
 		return (FAIL);
 	program->row_qnty = nrows;
 	program->column_qnty = ncolumns;

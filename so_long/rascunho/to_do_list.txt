@@ -1,6 +1,6 @@
-load posição do player e demais infos
-
-adicionar validação para mapa retangular <<<<
+Verificação de path
+verificar valgrind - pedir ajuda do gabriel
+Rever logica dos ponteiros. qual ponteiro estou usando para o player
 
 verificar se está dando relink
 

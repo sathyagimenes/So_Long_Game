@@ -19,6 +19,7 @@ SRCS	= ./sources/main.c				\
 			./sources/get_next_line.c	\
 			./sources/entity_validation.c	\
 			./sources/draw_map.c		\
+			./sources/move_player.c		\
 
 OBJS	= $(SRCS:%.c=%.o)
 
