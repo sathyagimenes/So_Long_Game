@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/25 12:03:00 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:51:30 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,5 @@ void move_player_down(t_program *program);
 void move_player_right(t_program *program);
 void move_player_left(t_program *program);
 void	destroy_sprites(t_program *program);
-void destroy_sprites_path(t_program *program);
 
 #endif
