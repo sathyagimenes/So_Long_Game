@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 12:32:08 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 16:42:25 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:53:00 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void move_player_right(t_program *program)
 
     y = program->player.point.y + 1;
     program->player.face = P_RIGHT;
-    
+
     if (check_movement(program, program->map_grid[program->player.point.x][y]))
     {
         program->map_grid[program->player.point.x][y] = EMPTY_SPACE;

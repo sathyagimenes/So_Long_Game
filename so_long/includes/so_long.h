@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 16:55:48 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:03:00 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,11 +147,13 @@ int read_map(char *argv_1, t_program *program);
 int get_next_line(int fd, char **line);
 void free_grid(t_program *program);
 int map_validation(t_program *program);
-void render(t_program *program);
+int render(t_program *program);
 int load_sprites(t_program *program);
 void move_player_up(t_program *program);
 void move_player_down(t_program *program);
 void move_player_right(t_program *program);
 void move_player_left(t_program *program);
+void	destroy_sprites(t_program *program);
+void destroy_sprites_path(t_program *program);
 
 #endif

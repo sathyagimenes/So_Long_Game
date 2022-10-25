@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:00:09 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 15:50:14 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:39:41 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void draw_image(char grid_pos, t_program *program);
 static void draw_text(t_program *program);
 
-void render(t_program *program)
+int render(t_program *program)
 {
     int x;
     int y;
@@ -38,6 +38,8 @@ void render(t_program *program)
         x++;
     }
     draw_text(program);
+    destroy_sprites(program);
+    return (SUCCESS);
 }
 
 static void draw_image(char grid_pos, t_program *program)
@@ -64,9 +66,10 @@ static void draw_text(t_program *program)
     char	*count;
     char	*steps;
 
-	steps = ft_calloc(sizeof(char), 100);
 	count = ft_itoa(program->player.steps);
 	steps = ft_strjoin("Steps: ", count);
+    free(count);
 	printf("%s\n", steps);
     mlx_string_put(program->mlx, program->mlx_win, 10, 10, 0x00FFFFFF, steps);
+    free(steps);
 }

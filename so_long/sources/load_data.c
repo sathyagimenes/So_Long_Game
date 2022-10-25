@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:30:38 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 13:06:51 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:48:03 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,6 @@ int	load_sprites(t_program *program)
 	program->obj.collectible.image = mlx_xpm_file_to_image(program->mlx,
 			program->obj.collectible.path,
 			&program->obj.collectible.width,
-			&program->obj.collectible.height);
-	program->obj.exit.image = mlx_xpm_file_to_image(program->mlx,
-			program->obj.exit.path,
-			&program->obj.exit.width,
-			&program->obj.exit.height);
-	program->obj.floor.image = mlx_xpm_file_to_image(program->mlx,
-			program->obj.floor.path,
-			&program->obj.floor.width,
-			&program->obj.floor.height);
-	program->obj.collectible.image = mlx_xpm_file_to_image(program->mlx,
-			program->obj.collectible.path, 
-			&program->obj.collectible.width, 
 			&program->obj.collectible.height);
 	program->obj.exit.image = mlx_xpm_file_to_image(program->mlx,
 			program->obj.exit.path,

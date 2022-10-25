@@ -6,13 +6,13 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:46:53 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 17:01:16 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:48:53 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	end_game(t_program *program, t_end end_type)
+int end_game(t_program *program, t_end end_type)
 {
 	free_grid(program);
 	mlx_destroy_window(program->mlx, program->mlx_win);
@@ -28,9 +28,9 @@ int	end_game(t_program *program, t_end end_type)
 	return (SUCCESS);
 }
 
-void	free_grid(t_program *program)
+void free_grid(t_program *program)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (program->map_grid[i] != NULL)
@@ -39,4 +39,14 @@ void	free_grid(t_program *program)
 		i++;
 	}
 	free(program->map_grid);
+}
+
+void destroy_sprites(t_program *program)
+{
+	mlx_destroy_image(program->mlx, program->obj.collectible.image);
+	mlx_destroy_image(program->mlx, program->obj.enemy.image);
+	mlx_destroy_image(program->mlx, program->obj.exit.image);
+	mlx_destroy_image(program->mlx, program->player.image);
+	mlx_destroy_image(program->mlx, program->obj.wall.image);
+	mlx_destroy_image(program->mlx, program->obj.floor.image);
 }
