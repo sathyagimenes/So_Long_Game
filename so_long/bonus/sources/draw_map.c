@@ -6,11 +6,11 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:00:09 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 09:20:23 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:13:45 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void draw_image(char grid_pos, t_program *program);
 static void draw_text(t_program *program);

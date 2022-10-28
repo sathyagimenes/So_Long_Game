@@ -6,11 +6,11 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:29:03 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 09:43:04 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:14:01 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	keypress_hook(int keycode, t_program *program)
 {

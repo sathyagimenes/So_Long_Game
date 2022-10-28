@@ -6,11 +6,11 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 18:26:02 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 10:46:08 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:13:54 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int print_error_message(t_error error_type)
 {
