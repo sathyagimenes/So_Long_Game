@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 18:26:02 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 10:46:08 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:06:49 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int print_entity_error(t_error error_type)
 	if (error_type == INVALID_WALL)
 		message = "Wrong wall. Map must be surrounded by walls(1).\n";
 	if (error_type == INVALID_ENTITIES)
-		message = "Wrong entity. Accepted entities: 0,1,P,C,E,M.\n";
+		message = "Wrong entity. Accepted entities: 0,1,P,C,E.\n";
 	else if (error_type == INVALID_COLLECTIBLE)
 		message = "Invalid quantity of collectibles(C). Must have at least one.\n";
 	else if (error_type == INVALID_EXIT)

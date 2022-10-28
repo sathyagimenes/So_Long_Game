@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 12:32:08 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/25 11:53:00 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:01:09 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,5 @@ static int check_movement(t_program *program, char next_position)
             return (end_game(program, FOUND_EXIT));
         return (FAIL);
     }
-    else if (next_position == ENEMY)
-        return (end_game(program, ENEMY_KILL));
     return (SUCCESS);
 }

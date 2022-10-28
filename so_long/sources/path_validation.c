@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:16:30 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/27 22:48:32 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:02:10 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void flood_fill(t_path *path, int x, int y)
         path->collect += 1;
     if (path->grid[x][y] == EXIT)
         path->exit += 1;
-    if (path->grid[x][y] == WALL || path->grid[x][y] == ENEMY || path->grid[x][y] == EXIT)
+    if (path->grid[x][y] == WALL || path->grid[x][y] == EXIT)
         return;
 
     path->grid[x][y] = WALL;

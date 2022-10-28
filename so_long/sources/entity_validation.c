@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 09:48:59 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/27 13:30:12 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 12:57:46 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int verify_entities(t_program *program)
 		y = 1;
 		while (y < ncolumn - 1)
 		{
-			if (grid[x][y] != PLAYER_POSITION && grid[x][y] != EXIT && grid[x][y] != COLLECTIBLE && grid[x][y] != EMPTY_SPACE && grid[x][y] != WALL && grid[x][y] != ENEMY)
+			if (grid[x][y] != PLAYER_POSITION && grid[x][y] != EXIT && grid[x][y] != COLLECTIBLE && grid[x][y] != EMPTY_SPACE && grid[x][y] != WALL)
 				return (print_entity_error(INVALID_ENTITIES));
 			y++;
 		}
@@ -116,7 +116,6 @@ static void count_entities(t_program *program)
 	program->player.qty = 0;
 	program->obj.collectible.qty = 0;
 	program->obj.exit.qty = 0;
-	program->obj.enemy.qty = 0;
 	x = 1;
 	while (x < program->row_qnty - 1)
 	{
@@ -129,8 +128,6 @@ static void count_entities(t_program *program)
 				program->obj.exit.qty += 1;
 			if (program->map_grid[x][y] == COLLECTIBLE)
 				program->obj.collectible.qty += 1;
-			if (program->map_grid[x][y] == ENEMY)
-				program->obj.enemy.qty += 1;
 			y++;
 		}
 		x++;

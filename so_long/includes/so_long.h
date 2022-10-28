@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 11:08:23 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:05:31 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 #define COLLECTIBLE 'C'
 #define EXIT 'E'
 #define PLAYER_POSITION 'P'
-#define ENEMY 'M'
 #define IMG_SIZE 64
 
 #define RED "\x1b[38;5;1m"
@@ -71,7 +70,6 @@ typedef enum e_end
 {
 	ESCAPE_KEY,
 	FOUND_EXIT,
-	ENEMY_KILL,
 } t_end;
 
 typedef struct s_img
@@ -122,7 +120,6 @@ typedef struct s_objects
 {
 	t_sprite collectible;
 	t_sprite exit;
-	t_sprite enemy;
 	t_sprite floor;
 	t_sprite wall;
 } t_objects;

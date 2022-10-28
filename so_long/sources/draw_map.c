@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:00:09 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 09:20:23 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 12:55:27 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ static void draw_image(char grid_pos, t_program *program)
     else if (grid_pos == COLLECTIBLE)
         mlx_put_image_to_window(program->mlx, program->mlx_win,
                                 program->obj.collectible.image, program->pos.y, program->pos.x);
-    else if (grid_pos == ENEMY)
-        mlx_put_image_to_window(program->mlx, program->mlx_win,
-                                program->obj.enemy.image, program->pos.y, program->pos.x);
     else if (grid_pos == PLAYER_POSITION)
         mlx_put_image_to_window(program->mlx, program->mlx_win,
                                 program->player.image, program->player.point.y * IMG_SIZE, program->player.point.x * IMG_SIZE);
@@ -64,13 +61,5 @@ static void draw_image(char grid_pos, t_program *program)
 
 static void draw_text(t_program *program)
 {
-    char	*count;
-    char	*steps;
-
-	count = ft_itoa(program->player.steps);
-	steps = ft_strjoin("Steps: ", count);
-    free(count);
-	printf("%s\n", steps);
-    mlx_string_put(program->mlx, program->mlx_win, 10, 10, 0x00FFFFFF, steps);
-    free(steps);
+    printf("steps: %d\n", program->player.steps);
 }
