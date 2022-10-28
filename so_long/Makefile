@@ -1,7 +1,6 @@
 NAME	= so_long
 INCLUDES_PATH	= ./includes
 LIBFT_PATH = ./libft
-MINILIBX_PATH = ./minilibx
 CC	= gcc
 CFLAGS	= -Wall -Werror -Wextra -g3
 LINK_EXTERNAL_LIBS = -lm -lmlx -lXext -lX11
@@ -23,23 +22,19 @@ SRCS	= ./sources/main.c				\
 
 OBJS	= $(SRCS:%.c=%.o)
 
-all:	$(NAME) build_libft build_minilibx
+all:	$(NAME) build_libft
 
-$(NAME):	build_libft build_minilibx $(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) -o $@ -L $(LIBFT_PATH) -L $(MINILIBX_PATH) -I $(MINILIBX_PATH) -I $(INCLUDES_PATH) -I $(LIBFT_PATH) $(LINK_EXTERNAL_LIBS) $(LINK_INTERNAL_LIBS)
+$(NAME):	build_libft $(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) -o $@ -L $(LIBFT_PATH) -I $(INCLUDES_PATH) -I $(LIBFT_PATH) $(LINK_EXTERNAL_LIBS) $(LINK_INTERNAL_LIBS)
 
 %.o:		%.c
-			$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -I $(LIBFT_PATH) -I $(MINILIBX_PATH) $(LINK_EXTERNAL_LIBS) -o $@ -c $<
+			$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -I $(LIBFT_PATH) $(LINK_EXTERNAL_LIBS) -o $@ -c $<
 
 build_libft:
 			$(MAKE) -C $(LIBFT_PATH)
 
-build_minilibx:
-			$(MAKE) -C $(MINILIBX_PATH)
-
 clean:
 			$(MAKE) clean -C $(LIBFT_PATH)
-			$(MAKE) clean -C $(MINILIBX_PATH)
 			rm -f $(OBJS)
 
 fclean:		clean
