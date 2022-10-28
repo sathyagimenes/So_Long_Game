@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:00:09 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 11:13:45 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:18:02 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int render(t_program *program)
         }
         x++;
     }
-    if (program->player.steps != 0)
-        draw_text(program);
+    draw_text(program);
     destroy_sprites(program);
     return (SUCCESS);
 }
@@ -64,13 +63,14 @@ static void draw_image(char grid_pos, t_program *program)
 
 static void draw_text(t_program *program)
 {
-    char	*count;
-    char	*steps;
+    char *count;
+    char *steps;
 
-	count = ft_itoa(program->player.steps);
-	steps = ft_strjoin("Steps: ", count);
+    count = ft_itoa(program->player.steps);
+    steps = ft_strjoin("Steps: ", count);
     free(count);
-	printf("%s\n", steps);
+    if (program->player.steps != 0)
+        printf("%s\n", steps);
     mlx_string_put(program->mlx, program->mlx_win, 10, 10, 0x00FFFFFF, steps);
     free(steps);
 }

@@ -2,8 +2,6 @@ NAME	= so_long
 INCLUDES_PATH	= ./includes
 LIBFT_PATH = ./libft
 MINILIBX_PATH = ./minilibx
-BONUS_PATH = ./bonus
-BONUS_NAME = so_long_bonus
 CC	= gcc
 CFLAGS	= -Wall -Werror -Wextra -g3
 LINK_EXTERNAL_LIBS = -lm -lmlx -lXext -lX11
@@ -39,20 +37,14 @@ build_libft:
 build_minilibx:
 			$(MAKE) -C $(MINILIBX_PATH)
 
-b:
-			$(MAKE) -C $(BONUS_PATH)
-			mv $(BONUS_PATH)/$(BONUS_NAME) ../so_long
-
 clean:
 			$(MAKE) clean -C $(LIBFT_PATH)
 			$(MAKE) clean -C $(MINILIBX_PATH)
-			$(MAKE) clean -C $(BONUS_PATH)
 			rm -f $(OBJS)
 
 fclean:		clean
 			$(MAKE) fclean -C $(LIBFT_PATH)
-			$(MAKE) fclean -C $(BONUS_PATH)
-			rm -f $(NAME) $(BONUS_NAME)
+			rm -f $(NAME)
 
 re:			fclean all
 
