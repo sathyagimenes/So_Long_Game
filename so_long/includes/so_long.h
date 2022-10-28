@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:30:06 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/25 12:51:30 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:30:47 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef enum e_error
 	INVALID_WALL,
 	INVALID_PLAYER,
 	INVALID_COLLECTIBLE,
-	INVALID_EXIT
+	INVALID_EXIT,
+	INVALID_PATH
 } t_error;
 
 typedef enum e_face
@@ -100,6 +101,14 @@ typedef struct s_point
 	int x;
 	int y;
 } t_point;
+
+typedef struct s_path
+{
+	char **grid;
+	t_point point;
+	int collect;
+	int exit;
+} t_path;
 
 typedef struct s_player
 {
@@ -154,5 +163,7 @@ void move_player_down(t_program *program);
 void move_player_right(t_program *program);
 void move_player_left(t_program *program);
 void	destroy_sprites(t_program *program);
+int	verify_path(t_program *program);
+void save_player_position(t_program *program);
 
 #endif

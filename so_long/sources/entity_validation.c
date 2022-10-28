@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 09:48:59 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/18 12:23:03 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:30:12 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ int map_validation(t_program *program)
 		free_grid(program);
 		return (FAIL);
 	}
-	// if (!verify_path(program))
-	// {
-	// 	free_grid(program);
-	// 	return (print_map_error(INVALID_PATH));
-	// }
+	save_player_position(program);
+	if (!verify_path(program))
+	{
+		free_grid(program);
+		return (FAIL);
+	}
 	return (SUCCESS);
 }
 
@@ -61,7 +62,7 @@ static int verify_walls(t_program *program)
 		{
 			if (x == 0 || y == 0 || x == nrow - 1 || y == ncolumn - 1)
 				if (grid[x][y] != WALL)
-					return (print_map_error(INVALID_WALL));
+					return (print_entity_error(INVALID_WALL));
 			y++;
 		}
 		x++;
@@ -87,7 +88,7 @@ static int verify_entities(t_program *program)
 		while (y < ncolumn - 1)
 		{
 			if (grid[x][y] != PLAYER_POSITION && grid[x][y] != EXIT && grid[x][y] != COLLECTIBLE && grid[x][y] != EMPTY_SPACE && grid[x][y] != WALL && grid[x][y] != ENEMY)
-				return (print_map_error(INVALID_ENTITIES));
+				return (print_entity_error(INVALID_ENTITIES));
 			y++;
 		}
 		x++;

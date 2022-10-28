@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 18:26:02 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/23 11:59:37 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:27:54 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ int print_map_error(t_error error_type)
 		message = "Could not read map.\n";
 	if (error_type == INVALID_SAVE)
 		message = "Could not save map. Size of rows must be equal.\n";
-	if (error_type == INVALID_WALL)
-		message = "Wrong wall. Map must be surrounded by walls(1).\n";
-	if (error_type == INVALID_ENTITIES)
-		message = "Wrong entitie. Accepted entities: 0,1,P,C,E.\n";
 	ft_printf(RED "Error\n%s" RESET, message);
 	return (FAIL);
 }
@@ -53,10 +49,16 @@ int print_entity_error(t_error error_type)
 	message = "No error";
 	if (error_type == INVALID_PLAYER)
 		message = "Invalid quantity of players(P). Must have one player.\n";
+	if (error_type == INVALID_WALL)
+		message = "Wrong wall. Map must be surrounded by walls(1).\n";
+	if (error_type == INVALID_ENTITIES)
+		message = "Wrong entitie. Accepted entities: 0,1,P,C,E.\n";
 	else if (error_type == INVALID_COLLECTIBLE)
 		message = "Invalid quantity of collectibles(C). Must have at least one.\n";
 	else if (error_type == INVALID_EXIT)
 		message = "Invalid quantity of exits(E). Must have one exit.\n";
+	else if (error_type == INVALID_PATH)
+		message = "Invalid path. Must have a clear path to collectibles and exit.\n";
 	ft_printf(RED "Error\n%s" RESET, message);
 	return (FAIL);
 }
