@@ -25,15 +25,15 @@ SRCS	= ./sources/main.c				\
 			./sources/move_player.c		\
 			./sources/path_validation.c
 
-BONUS_SRCS = ./bonus/sources/main_bonus.c				\
+BONUS_SRCS = ./sources/main.c				\
 			./bonus/sources/load_data_bonus.c		\
-			./bonus/sources/initialize_bonus.c		\
-			./bonus/sources/arg_validation_bonus.c	\
+			./sources/initialize.c		\
+			./sources/arg_validation.c	\
 			./bonus/sources/end_game_bonus.c		\
-			./bonus/sources/hooks_bonus.c			\
+			./sources/hooks.c			\
 			./bonus/sources/error_messages_bonus.c	\
-			./bonus/sources/read_map_bonus.c		\
-			./bonus/sources/get_next_line_bonus.c	\
+			./sources/read_map.c		\
+			./sources/get_next_line.c	\
 			./bonus/sources/entity_validation_bonus.c	\
 			./bonus/sources/draw_map_bonus.c		\
 			./bonus/sources/move_player_bonus.c		\

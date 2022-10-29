@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_messages.c                                   :+:      :+:    :+:   */
+/*   error_messages_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 18:26:02 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 11:13:54 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:23:36 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int print_map_error(t_error error_type)
 	if (error_type == INVALID_MAP)
 		message = "Could not read map.\n";
 	if (error_type == INVALID_SAVE)
-		message = "Could not save map. Size of rows must be equal.\n";
+		message = "Could not save map.\n";
 	ft_printf(RED "Error\n%s" RESET, message);
 	return (FAIL);
 }
