@@ -8,6 +8,8 @@ LINK_EXTERNAL_LIBS = -lm -lmlx -lXext -lX11
 LINK_INTERNAL_LIBS = -lft
 LIB = libft/libft.a
 MLX = minilibx/libmlx.a
+BONUS_NAME	= so_long_bonus
+BONUS_INCLUDES_PATH	= ./bonus/includes
 
 SRCS	= ./sources/main.c				\
 			./sources/load_data.c		\
@@ -23,15 +25,33 @@ SRCS	= ./sources/main.c				\
 			./sources/move_player.c		\
 			./sources/path_validation.c
 
+BONUS_SRCS = ./bonus/sources/main_bonus.c				\
+			./bonus/sources/load_data_bonus.c		\
+			./bonus/sources/initialize_bonus.c		\
+			./bonus/sources/arg_validation_bonus.c	\
+			./bonus/sources/end_game_bonus.c		\
+			./bonus/sources/hooks_bonus.c			\
+			./bonus/sources/error_messages_bonus.c	\
+			./bonus/sources/read_map_bonus.c		\
+			./bonus/sources/get_next_line_bonus.c	\
+			./bonus/sources/entity_validation_bonus.c	\
+			./bonus/sources/draw_map_bonus.c		\
+			./bonus/sources/move_player_bonus.c		\
+			./bonus/sources/path_validation_bonus.c
+
 OBJS	= $(SRCS:%.c=%.o)
+
+BONUS_OBJS	= $(BONUS_SRCS:%.c=%.o)
 
 all:	$(NAME) ${LIB} ${MLX}
 
 $(NAME):	${LIB} ${MLX} $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $@ -L $(LIBFT_PATH) -L $(MINILIBX_PATH) -I $(MINILIBX_PATH) -I $(INCLUDES_PATH) -I $(LIBFT_PATH) $(LINK_EXTERNAL_LIBS) $(LINK_INTERNAL_LIBS)
 
+# %.o:		%.c
+# 			$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -I $(LIBFT_PATH) -I $(MINILIBX_PATH) $(LINK_EXTERNAL_LIBS) -o $@ -c $<
 %.o:		%.c
-			$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -I $(LIBFT_PATH) -I $(MINILIBX_PATH) $(LINK_EXTERNAL_LIBS) -o $@ -c $<
+			$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -I $(BONUS_INCLUDES_PATH) -I $(LIBFT_PATH) -I $(MINILIBX_PATH) $(LINK_EXTERNAL_LIBS) -o $@ -c $<
 
 ${LIB}:
 	make -C libft
@@ -39,14 +59,19 @@ ${LIB}:
 ${MLX}:
 	make -C minilibx
 
+bonus:	$(BONUS_NAME) ${LIB} ${MLX}
+
+$(BONUS_NAME):	${LIB} ${MLX} $(BONUS_OBJS)
+				$(CC) $(CFLAGS) $(BONUS_OBJS) -o $@ -L $(LIBFT_PATH) -L $(MINILIBX_PATH) -I $(MINILIBX_PATH) -I $(BONUS_INCLUDES_PATH) -I $(LIBFT_PATH) $(LINK_EXTERNAL_LIBS) $(LINK_INTERNAL_LIBS)
+
 clean:
 			$(MAKE) clean -C $(LIBFT_PATH)
 			$(MAKE) clean -C $(MINILIBX_PATH)
-			rm -f $(OBJS)
+			rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean:		clean
 			$(MAKE) fclean -C $(LIBFT_PATH)
-			rm -f $(NAME)
+			rm -f $(NAME) $(BONUS_NAME)
 
 re:			fclean all
 

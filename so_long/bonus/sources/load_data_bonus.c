@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:30:38 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 11:14:07 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/29 14:27:12 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	load_sprites_path(t_program *program)
 	program->obj.exit.path = "./images/exit.xpm";
 	program->obj.floor.path = "./images/floor.xpm";
 	program->obj.wall.path = "./images/wall.xpm";
-	program->obj.enemy.path = "./images/enemy.xpm";
+	program->obj.enemy.path = "./bonus/images/enemy.xpm";
 	return (SUCCESS);
 }
 
