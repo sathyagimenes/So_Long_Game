@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 21:18:17 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/29 17:51:09 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:06:50 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ char *ft_strjoin_utils(char *dst, char *src, size_t len)
 	new = (char *)ft_calloc(sizeof(char), (ft_strlen(dst) + len + 1)); // aqui
 	if (!new)
 		return (NULL);
-	ft_memcpy(new, dst, ft_strlen(dst) + 1);
-	ft_memcpy((new + ft_strlen(dst)), src, len + 1);
+	ft_strcpy(new, dst, ft_strlen(dst) + 1);
+	ft_strcpy((new + ft_strlen(dst)), src, len + 1);
 	if (dst)
 		free(dst);
 	return (new);
