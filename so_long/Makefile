@@ -64,7 +64,6 @@ $(BONUS_NAME):	${LIB} ${MLX} $(BONUS_OBJS)
 
 clean:
 			$(MAKE) clean -C $(LIBFT_PATH)
-			$(MAKE) clean -C $(MINILIBX_PATH)
 			rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean:		clean

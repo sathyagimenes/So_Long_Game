@@ -1,7 +1,5 @@
 Rever logica dos ponteiros. qual ponteiro estou usando para o player
 Reler o pdf. Ver se está cumprindo todos os requisitos
-arrumar norma
-
 
 usar a gnl para ler o arquivo .ber (ler cada letra e usar a imagem correspondente para montar a imagem completa)
 
