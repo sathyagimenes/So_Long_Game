@@ -6,13 +6,13 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:46:53 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/28 12:59:59 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 01:38:37 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int end_game(t_program *program, t_end end_type)
+int	end_game(t_program *program, t_end end_type)
 {
 	free_grid(program);
 	mlx_destroy_window(program->mlx, program->mlx_win);
@@ -26,9 +26,9 @@ int end_game(t_program *program, t_end end_type)
 	return (SUCCESS);
 }
 
-void free_grid(t_program *program)
+void	free_grid(t_program *program)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (program->map_grid[i] != NULL)
@@ -39,7 +39,7 @@ void free_grid(t_program *program)
 	free(program->map_grid);
 }
 
-void destroy_sprites(t_program *program)
+void	destroy_sprites(t_program *program)
 {
 	mlx_destroy_image(program->mlx, program->obj.collectible.image);
 	mlx_destroy_image(program->mlx, program->obj.exit.image);

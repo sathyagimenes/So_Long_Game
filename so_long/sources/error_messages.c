@@ -6,16 +6,16 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 18:26:02 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/29 17:10:24 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 01:40:07 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int print_error_message(t_error error_type)
+int	print_error_message(t_error error_type)
 {
-	char *message;
-	char *valid_example;
+	char	*message;
+	char	*valid_example;
 
 	message = "No error";
 	if (error_type == INVALID_ARGUMENT)
@@ -27,9 +27,9 @@ int print_error_message(t_error error_type)
 	return (FAIL);
 }
 
-int print_map_error(t_error error_type)
+int	print_map_error(t_error error_type)
 {
-	char *message;
+	char	*message;
 
 	message = "Undefined";
 	if (error_type == INVALID_SHAPE)
@@ -42,9 +42,9 @@ int print_map_error(t_error error_type)
 	return (FAIL);
 }
 
-int print_entity_error(t_error error_type)
+int	print_entity_error(t_error error_type)
 {
-	char *message;
+	char	*message;
 
 	message = "No error";
 	if (error_type == INVALID_PLAYER)
@@ -54,11 +54,11 @@ int print_entity_error(t_error error_type)
 	if (error_type == INVALID_ENTITIES)
 		message = "Wrong entity. Accepted entities: 0,1,P,C,E.\n";
 	else if (error_type == INVALID_COLLECTIBLE)
-		message = "Invalid quantity of collectibles(C). Must have at least one.\n";
+		message = "Invalid quantity of collectibles. Must have at least one.\n";
 	else if (error_type == INVALID_EXIT)
 		message = "Invalid quantity of exits(E). Must have one exit.\n";
 	else if (error_type == INVALID_PATH)
-		message = "Invalid path. Must have a clear path to collectibles and exit.\n";
+		message = "Invalid path. Could not reach all collectibles and exit.\n";
 	ft_printf(RED "Error\n%s" RESET, message);
 	return (FAIL);
 }

@@ -1,10 +1,6 @@
 Rever logica dos ponteiros. qual ponteiro estou usando para o player
 Reler o pdf. Ver se está cumprindo todos os requisitos
-mudar o frodo e o orc?
-
-colocar bonus no make file
 arrumar norma
-atualizar gnl do bonus
 
 
 usar a gnl para ler o arquivo .ber (ler cada letra e usar a imagem correspondente para montar a imagem completa)

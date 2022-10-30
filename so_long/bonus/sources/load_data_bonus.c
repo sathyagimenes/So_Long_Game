@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_data.c                                        :+:      :+:    :+:   */
+/*   load_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:30:38 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/29 14:27:12 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 02:23:38 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void initial_configuration(t_program *program);
+static void	initial_configuration(t_program *program);
 static int	load_sprites_path(t_program *program);
 
-void load_data(t_program *program)
+void	load_data(t_program *program)
 {
 	initial_configuration(program);
 	load_sprites_path(program);
 }
 
-void save_player_position(t_program *program)
+void	save_player_position(t_program *program)
 {
-	int row;
-	int column;
+	int	row;
+	int	column;
 
 	row = 1;
 	while (row < program->row_qnty - 1)
@@ -43,7 +43,7 @@ void save_player_position(t_program *program)
 	}
 }
 
-static void initial_configuration(t_program *program)
+static void	initial_configuration(t_program *program)
 {
 	program->player.face = P_DOWN;
 	program->player.steps = 0;

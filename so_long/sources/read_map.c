@@ -6,18 +6,18 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 23:20:58 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/29 17:17:47 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 01:56:24 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int set_map_length(char *argv_1, t_program *program);
-static int valid_read(char *argv_1);
-static int save_map(char *argv_1, t_program *program);
-int	valid_shape(t_program *program);
+static int	set_map_length(char *argv_1, t_program *program);
+static int	valid_read(char *argv_1);
+static int	save_map(char *argv_1, t_program *program);
+int			valid_shape(t_program *program);
 
-int read_map(char *argv_1, t_program *program)
+int	read_map(char *argv_1, t_program *program)
 {
 	if (!valid_read(argv_1))
 		return (print_map_error(INVALID_MAP));
@@ -36,7 +36,7 @@ int read_map(char *argv_1, t_program *program)
 	return (SUCCESS);
 }
 
-static int valid_read(char *argv_1)
+static int	valid_read(char *argv_1)
 {
 	int		fd;
 	char	*line;
@@ -56,43 +56,39 @@ static int valid_read(char *argv_1)
 	return (SUCCESS);
 }
 
-static int set_map_length(char *argv_1, t_program *program)
+static int	set_map_length(char *argv_1, t_program *program)
 {
-	int fd;
-	int gnl;
-	int nrows;
-	int ncolumns;
-	char *line;
+	int		fd;
+	int		gnl;
+	char	*line;
 
 	gnl = 1;
-	nrows = 0;
-	ncolumns = 0;
+	program->row_qnty = 0;
+	program->column_qnty = 0;
 	fd = open(argv_1, O_RDONLY);
 	while (gnl)
 	{
 		gnl = get_next_line(fd, &line);
-		nrows++;
-		if (nrows == 1)
-			ncolumns = ft_strlen(line);
+		program->row_qnty++;
+		if (program->row_qnty == 1)
+			program->column_qnty = ft_strlen(line);
 		if (ft_strlen(line) == 0)
-			nrows--;
+			program->row_qnty--;
 		if (gnl >= 0)
 			free(line);
 	}
 	close(fd);
-	if (nrows == ncolumns)
+	if (program->row_qnty == program->column_qnty)
 		return (FAIL);
-	program->row_qnty = nrows;
-	program->column_qnty = ncolumns;
 	return (SUCCESS);
 }
 
-static int save_map(char *argv_1, t_program *program)
+static int	save_map(char *argv_1, t_program *program)
 {
-	int fd;
-	int i;
-	int gnl;
-	int nrows;
+	int	fd;
+	int	i;
+	int	gnl;
+	int	nrows;
 
 	i = 0;
 	gnl = 1;
@@ -118,7 +114,7 @@ int	valid_shape(t_program *program)
 	while (x < program->row_qnty)
 	{
 		if (ft_strlen(program->map_grid[x++]) != len)
-				return (FAIL);
+			return (FAIL);
 		x++;
 	}
 	return (SUCCESS);

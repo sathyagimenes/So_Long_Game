@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:41:28 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/25 12:40:51 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 02:07:19 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	initialize_game(t_program *program)
 			program->row_qnty * IMG_SIZE,
 			"so_long");
 	mlx_key_hook(program->mlx_win, keypress_hook, program);
-	mlx_hook(program->mlx_win, ClientMessage, ButtonPressMask, end_game, program);
+	mlx_hook(program->mlx_win, ClientMessage,
+		ButtonPressMask, end_game, program);
 	mlx_expose_hook(program->mlx_win, &render, program);
 	mlx_loop(program->mlx);
 	return (SUCCESS);

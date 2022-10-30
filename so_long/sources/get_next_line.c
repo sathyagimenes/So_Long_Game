@@ -6,16 +6,16 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 21:18:17 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/29 18:06:50 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 02:05:49 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	read_and_join(int fd, char **read_buffer, char *line_buffer, int *bytes);
+static int	read_and_join(int fd, char **read_buffer, char *line, int *bytes);
 static char	*make_line(char **line, char **read_buffer);
-int	ft_strchr_utils(char *s, char c);
-char	*ft_strjoin_utils(char *dst, char *src, size_t len);
+int			ft_strchr_utils(char *s, char c);
+char		*ft_join(char *dst, char *src, size_t len);
 
 int	get_next_line(int fd, char **line)
 {
@@ -44,32 +44,32 @@ int	get_next_line(int fd, char **line)
 	return (1);
 }
 
-static int read_and_join(int fd, char **read_buffer, char *line_buffer, int *bytes)
+static int	read_and_join(int fd, char **read_buffer, char *line, int *bytes)
 {
-	size_t size;
+	size_t	size;
 
 	while (*bytes && ft_strchr_utils(*read_buffer, '\n') == -1)
 	{
-		*bytes = read(fd, line_buffer, BUFFER_SIZE);
+		*bytes = read(fd, line, BUFFER_SIZE);
 		if (*bytes < 0 || BUFFER_SIZE < *bytes)
 		{
-			free(line_buffer);
+			free(line);
 			return (-1);
 		}
 		if (*bytes)
 		{
-			size = ft_strlen(*read_buffer);
-			*read_buffer = ft_strjoin_utils(*read_buffer, line_buffer, (BUFFER_SIZE + size));
+			len = ft_strlen(*read_buffer);
+			*read_buffer = ft_join(*read_buffer, line, (BUFFER_SIZE + len));
 		}
 	}
-	free(line_buffer);
+	free(line);
 	return (1);
 }
 
-static char *make_line(char **line, char **read_buffer)
+static char	*make_line(char **line, char **read_buffer)
 {
-	char *temp;
-	int end_line;
+	char	*temp;
+	int		end_line;
 
 	temp = NULL;
 	end_line = ft_strchr_utils(*read_buffer, '\n');
@@ -89,9 +89,9 @@ static char *make_line(char **line, char **read_buffer)
 	return (temp);
 }
 
-int ft_strchr_utils(char *s, char c)
+int	ft_strchr_utils(char *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -107,13 +107,13 @@ int ft_strchr_utils(char *s, char c)
 	return (-1);
 }
 
-char *ft_strjoin_utils(char *dst, char *src, size_t len)
+char	*ft_join(char *dst, char *src, size_t len)
 {
-	char *new;
+	char	*new;
 
 	if (!dst && !src)
 		return (NULL);
-	new = (char *)ft_calloc(sizeof(char), (ft_strlen(dst) + len + 1)); // aqui
+	new = (char *)ft_calloc(sizeof(char), (ft_strlen(dst) + len + 1));
 	if (!new)
 		return (NULL);
 	ft_strcpy(new, dst, ft_strlen(dst) + 1);
