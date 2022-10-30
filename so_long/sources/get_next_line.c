@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 21:18:17 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/30 02:05:49 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 02:39:33 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	get_next_line(int fd, char **line)
 
 static int	read_and_join(int fd, char **read_buffer, char *line, int *bytes)
 {
-	size_t	size;
+	size_t	len;
 
 	while (*bytes && ft_strchr_utils(*read_buffer, '\n') == -1)
 	{
