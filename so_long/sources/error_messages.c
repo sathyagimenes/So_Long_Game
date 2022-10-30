@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 18:26:02 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/30 01:40:07 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/30 00:06:16 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	print_map_error(t_error error_type)
 	if (error_type == INVALID_SHAPE)
 		message = "Wrong map shape (must be rectangular).\n";
 	if (error_type == INVALID_MAP)
-		message = "Could not read map.\n";
+		message = "Could not read map. Must not have empty lines.\n";
 	if (error_type == INVALID_SAVE)
 		message = "Could not save map.\n";
 	ft_printf(RED "Error\n%s" RESET, message);
