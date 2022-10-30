@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 23:20:58 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/30 01:56:24 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/29 22:40:18 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	valid_read(char *argv_1)
 	{
 		gnl = get_next_line(fd, &line);
 		if (gnl < 0)
+			return (FAIL);
+		if (ft_strlen(line) == 0)
 			return (FAIL);
 		if (gnl >= 0)
 			free(line);
