@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 10:53:09 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/30 02:18:29 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:05:15 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 # include <sys/resource.h>
 # include <sys/stat.h>
 
-# define WINDOW_HEIGHT 360
-# define WINDOW_WIDTH 640
 # define EMPTY_SPACE '0'
 # define WALL '1'
 # define COLLECTIBLE 'C'
