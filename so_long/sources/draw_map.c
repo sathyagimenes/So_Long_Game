@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:00:09 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/30 01:59:42 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:07:39 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ static void	draw_image(char grid_pos, t_program *program)
 
 static void	draw_text(t_program *program)
 {
-	printf("steps: %d\n", program->player.steps);
+	ft_printf("steps: %d\n", program->player.steps);
 }

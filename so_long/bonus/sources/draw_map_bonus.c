@@ -6,7 +6,7 @@
 /*   By: sde-cama <sde-cama@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:00:09 by sde-cama          #+#    #+#             */
-/*   Updated: 2022/10/30 02:22:05 by sde-cama         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:07:28 by sde-cama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	draw_text(t_program *program)
 	steps = ft_strjoin("Steps: ", count);
 	free(count);
 	if (program->player.steps != 0)
-		printf("%s\n", steps);
+		ft_printf("%s\n", steps);
 	mlx_string_put(program->mlx, program->mlx_win, 10, 10, 0x00FFFFFF, steps);
 	free(steps);
 }
