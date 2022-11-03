@@ -10,8 +10,8 @@
 
 ### Requirements
 1. The project is written in C language and thus needs the **`gcc` compiler** and some standard **C libraries** to run.<br>
-2. Also, the minilibx library present in this repository is set to run on a linux OS. Therefore, if you don't have it, you will have to install a VM. If you ara a sutudent at 42, you can run it on workspace. Since workspace already have minilibx installed by default, you will have to substitute the makefile present on root with the <a href="./so_long/utils/Makefile" target="_blank">makefile adjusted to run on workspace</a>.
-3. If you are running on workspace and you are not on one of 42's local machines, you will have to install VNC. For this project I chose <a href="https://remmina.org/how-to-install-remmina/" target="_blank">Remmina</a>.
+2. Also, the minilibx library present in this repository is set to run on a linux OS. Therefore, if you don't have it, you will have to install a VM. If you ara a sutudent at 42, you can run it on workspace. Since workspace already have minilibx installed by default, you will have to substitute the makefile present on root with the <a href="./so_long/utils/Makefile" target=_blank>makefile adjusted to run on workspace</a>.
+3. If you are running on workspace and you are not on one of 42's local machines, you will have to install VNC. For this project I chose <a href="https://remmina.org/how-to-install-remmina/" target='_blank'>Remmina</a>.
 
 ### Instructions
   1. Clone this repository on a local folder<br>
